@@ -38,13 +38,18 @@ describe('QR symbol orientation', () => {
     const moduleSize = Math.floor((info.width - 2 * margin) / count);
     const start = Math.floor((info.width - count * moduleSize) / 2);
     const mismatches: Array<{ row: number; column: number }> = [];
+    const finderOrigins = [[0, 0], [0, count - 7], [count - 7, 0]];
 
     for (let row = 0; row < count; row += 1) {
       for (let column = 0; column < count; column += 1) {
         const x = start + column * moduleSize + Math.floor(moduleSize / 2);
         const y = start + row * moduleSize + Math.floor(moduleSize / 2);
         const isDark = data[(y * info.width + x) * info.channels] < 128;
-        if (isDark !== reference.isDark(row, column)) mismatches.push({ row, column });
+        // The rounded outer finder frames intentionally clip their four tips.
+        const roundedTip = finderOrigins.some(([r, c]) =>
+          [0, 6].includes(row - r) && [0, 6].includes(column - c));
+        const expectedDark = reference.isDark(row, column) && !roundedTip;
+        if (isDark !== expectedDark) mismatches.push({ row, column });
       }
     }
 

@@ -43,6 +43,7 @@ test('starts empty, normalizes URLs, and exports black QR codes with a white qui
   await expect(page.locator('#download-png')).toBeDisabled();
   await expect(page.locator('#download-svg')).toBeDisabled();
   await expect(page.locator('#color-input')).toHaveValue('#000000');
+  await expect(page.locator('#dot-style')).toHaveValue('extra-rounded');
   await expect(page.locator('#customize')).not.toHaveAttribute('open');
 
   await generate(page, 'example.com/path?source=qr&message=hello');
@@ -71,12 +72,16 @@ test('starts empty, normalizes URLs, and exports black QR codes with a white qui
   expect(model.getModuleCount()).toBe(modules);
   const modulePixels = (info.width - firstInk * 2) / modules;
   const mismatchedModules: string[] = [];
+  const finderOrigins = [[0, 0], [0, modules - 7], [modules - 7, 0]];
   for (let row = 0; row < modules; row++) {
     for (let column = 0; column < modules; column++) {
       const x = Math.floor(firstInk + (column + 0.5) * modulePixels);
       const y = Math.floor(firstInk + (row + 0.5) * modulePixels);
       const actualDark = data[(y * info.width + x) * 4] < 128;
-      if (actualDark !== model.isDark(row, column)) mismatchedModules.push(`${row},${column}`);
+      // Rounded finder frames clip only their four extreme tips.
+      const roundedTip = finderOrigins.some(([r, c]) =>
+        [0, 6].includes(row - r) && [0, 6].includes(column - c));
+      if (actualDark !== (model.isDark(row, column) && !roundedTip)) mismatchedModules.push(`${row},${column}`);
     }
   }
   expect(mismatchedModules, 'The image must use standard QR orientation, not a mirrored matrix').toEqual([]);
@@ -123,6 +128,7 @@ test('embeds an uploaded logo in self-contained exports, warns on light colors, 
   await expect(page.locator('#color-warning')).toBeVisible();
   await page.locator('#reset-style').click();
   await expect(page.locator('#color-input')).toHaveValue('#000000');
+  await expect(page.locator('#dot-style')).toHaveValue('extra-rounded');
   await expect(page.locator('#color-warning')).toBeHidden();
   await expect(page.locator('#remove-logo')).toBeHidden();
   await expect(page.locator('#url-input')).toHaveValue('https://nuu.app/?from=logo');

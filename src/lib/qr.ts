@@ -3,6 +3,7 @@ import QRCodeStyling from '../../vendor/qr-code-styling/src';
 import { normalizeUrl } from './url';
 
 export type DotStyle = 'square' | 'rounded' | 'dots' | 'classy' | 'classy-rounded' | 'extra-rounded';
+export const DEFAULT_DOT_STYLE: DotStyle = 'extra-rounded';
 
 export interface RenderQROptions {
   url: string;
@@ -84,8 +85,9 @@ export async function renderQR(options: RenderQROptions): Promise<RenderedQR> {
     image: logo,
     qrOptions: { typeNumber: 0, mode: 'Byte', errorCorrectionLevel },
     dotsOptions: { type: style, color },
-    cornersSquareOptions: { type: 'square', color },
-    cornersDotOptions: { type: 'square', color },
+    cornersSquareOptions: { type: 'extra-rounded', color },
+    // Inherit the dot style so Extra rounded also rounds each finder center.
+    cornersDotOptions: { color },
     backgroundOptions: { color: '#ffffff' },
     imageOptions: {
       hideBackgroundDots: true,

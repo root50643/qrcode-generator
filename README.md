@@ -18,7 +18,7 @@ An English-language, mobile-friendly QR code studio. Turn a website address into
 
 - Instant QR previews from HTTP or HTTPS website URLs. Missing `https://` is added automatically.
 - One-click clipboard paste, with a manual-paste fallback when browser access is unavailable.
-- Classic black-on-white defaults, custom foreground colors, and six dot patterns.
+- Extra-rounded black-on-white defaults with rounded finder corners, custom foreground colors, and six dot patterns.
 - Local PNG, JPEG, or WebP logos, up to 5 MB. Higher error correction is applied when a logo is used.
 - Download a **1024 × 1024 PNG** or a **self-contained SVG**, including the logo and a four-module quiet zone.
 - Responsive dark interface, keyboard navigation, visible focus, and reduced-motion support.
@@ -31,7 +31,7 @@ An English-language, mobile-friendly QR code studio. Turn a website address into
 2. Open **Customize** to choose a color, dot pattern, or logo.
 3. Select **Download PNG** for a bitmap or **Download SVG** for a scalable image.
 
-Use **Clear** to remove the URL, or **Reset appearance** to return to black squares without changing the URL. Dark colors provide the best scanning results. Test your final QR code with a phone before printing it, especially when using a custom logo.
+Use **Clear** to remove the URL, or **Reset appearance** to return to the black **Extra rounded** style without changing the URL. Dark colors provide the best scanning results. Test your final QR code with a phone before printing it, especially when using a custom logo.
 
 The URL is encoded directly: there are no short links, redirects, accounts, or usage limits. Generating a code does not contact the destination website. Chinese and other Unicode URLs are serialized correctly before encoding.
 

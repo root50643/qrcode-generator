@@ -2,7 +2,7 @@ import "./style.css";
 import { mountIcons } from "./icons";
 import { normalizeUrl } from "./lib/url";
 import { loadLogo } from "./lib/logo";
-import { renderQR, type DotStyle } from "./lib/qr";
+import { DEFAULT_DOT_STYLE, renderQR, type DotStyle } from "./lib/qr";
 import { initPWA } from "./pwa";
 
 mountIcons();
@@ -235,14 +235,14 @@ $("reset-style").addEventListener("click", () => {
   ++logoRevision;
   logoPending = false;
   colorInput.value = "#000000";
-  styleInput.value = "square";
+  styleInput.value = DEFAULT_DOT_STYLE;
   logo = undefined;
   logoName = "";
   logoInput.value = "";
   updateColorUI();
   updateLogoUI();
   scheduleRender(0);
-  notify("Appearance reset to classic black and white.");
+  notify("Appearance reset to rounded black and white.");
 });
 async function download(format: "png" | "svg") {
   if (!rendered) return;
