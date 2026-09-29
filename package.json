@@ -1,0 +1,33 @@
+{
+  "name": "nuu-qr",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A private-by-design, offline-ready QR code studio.",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run tests/unit",
+    "test:e2e": "playwright test",
+    "icons": "node scripts/generate-icons.mjs"
+  },
+  "dependencies": {
+    "qrcode-generator": "1.4.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@types/node": "^24.0.0",
+    "jsdom": "^30.1.1",
+    "jsqr": "1.4.0",
+    "sharp": "0.35.5",
+    "typescript": "5.9.3",
+    "vite": "8.3.1",
+    "vite-plugin-pwa": "1.3.0",
+    "vitest": "5.0.2"
+  }
+}

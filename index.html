@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#080d19" />
+    <meta
+      name="description"
+      content="Turn a link into something worth sharing. Create, customize, and download beautiful QR codes with NUU QR. Free, private, and ready to work offline."
+    />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+    <link rel="apple-touch-icon" href="%BASE_URL%icons/apple-touch-icon.png" />
+    <title>NUU QR — Make a connection</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#url-input">Skip to QR generator</a>
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href="./" aria-label="NUU QR home"
+          ><img
+            src="%BASE_URL%favicon.svg"
+            alt=""
+            width="38"
+            height="38"
+          /><span
+            >NUU<span class="brand-light">QR</span
+            ><span class="brand-divider"></span
+            ><span class="brand-studio">LINK STUDIO</span></span
+          ></a
+        >
+        <div class="header-actions">
+          <span id="offline-indicator" class="offline-label" hidden
+            >Offline mode</span
+          ><button
+            id="install-button"
+            class="button button-subtle"
+            type="button"
+          >
+            <span data-icon="install"></span><span>Install app</span></button
+          ><a
+            class="github-link"
+            href="https://github.com/root50643/qrcode-generator"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View source on GitHub (opens in a new tab)"
+            ><span data-icon="github"></span
+          ></a>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow">
+              <span class="tiny-cross" aria-hidden="true">✦</span> A LITTLE
+              CODE. A WORLD OF POSSIBILITIES.
+            </p>
+            <h1 id="page-title">Make a <span>connection.</span></h1>
+            <p class="intro-copy">Your link, ready for the real world.</p>
+          </div>
+          <div class="intro-note">
+            <span data-icon="shield"></span
+            ><span
+              >Created on your device.<br /><strong>Always yours.</strong></span
+            >
+          </div>
+        </section>
+
+        <div class="workspace">
+          <section class="editor glass-panel" aria-labelledby="editor-title">
+            <div class="panel-heading">
+              <div class="step-label">
+                <span class="step-number">01</span><span>THE DESTINATION</span>
+              </div>
+              <span class="tag">URL</span>
+            </div>
+            <h2 id="editor-title">It starts with a link.</h2>
+            <p class="section-copy">
+              Add a website address. We'll take it from here.
+            </p>
+            <div class="url-field">
+              <label for="url-input">Website URL</label>
+              <div class="input-wrap">
+                <span class="input-icon" data-icon="link"></span
+                ><input
+                  id="url-input"
+                  type="text"
+                  inputmode="url"
+                  autocomplete="url"
+                  autocapitalize="none"
+                  spellcheck="false"
+                  placeholder="https://your-website.com"
+                  aria-describedby="url-help input-error"
+                /><button
+                  id="clear-button"
+                  class="clear-button"
+                  type="button"
+                  aria-label="Clear URL"
+                  hidden
+                >
+                  <span data-icon="close"></span>
+                </button>
+              </div>
+              <div class="input-bottom">
+                <p id="url-help">No https://? We'll add it for you.</p>
+                <button
+                  id="paste-button"
+                  class="text-button"
+                  type="button"
+                  aria-label="Paste from clipboard"
+                >
+                  <span data-icon="clipboard"></span>Paste
+                </button>
+              </div>
+              <p id="input-error" class="error-message" role="alert" hidden></p>
+            </div>
+
+            <details id="customize" class="customize">
+              <summary>
+                <span class="customize-symbol" data-icon="sliders"></span
+                ><span class="customize-copy"
+                  ><strong>Customize</strong
+                  ><span>Color, pattern &amp; logo</span></span
+                ><span class="chevron" data-icon="chevron"></span>
+              </summary>
+              <div class="customize-body">
+                <div class="style-grid">
+                  <div class="control-group">
+                    <label for="color-input">Code color</label>
+                    <div class="color-control">
+                      <input
+                        id="color-input"
+                        type="color"
+                        value="#000000"
+                      /><span id="color-value">#000000</span>
+                    </div>
+                    <div class="swatches" aria-label="Color presets">
+                      <button
+                        type="button"
+                        class="swatch selected"
+                        style="--swatch: #000000"
+                        data-color="#000000"
+                        aria-label="Black"
+                        aria-pressed="true"
+                      ></button
+                      ><button
+                        type="button"
+                        class="swatch"
+                        style="--swatch: #162a46"
+                        data-color="#162a46"
+                        aria-label="Midnight"
+                        aria-pressed="false"
+                      ></button
+                      ><button
+                        type="button"
+                        class="swatch"
+                        style="--swatch: #5933a3"
+                        data-color="#5933a3"
+                        aria-label="Violet"
+                        aria-pressed="false"
+                      ></button
+                      ><button
+                        type="button"
+                        class="swatch"
+                        style="--swatch: #086877"
+                        data-color="#086877"
+                        aria-label="Ocean"
+                        aria-pressed="false"
+                      ></button>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label for="dot-style">Dot pattern</label
+                    ><select id="dot-style">
+                      <option value="square">Classic squares</option>
+                      <option value="rounded">Soft corners</option>
+                      <option value="dots">Dots</option>
+                      <option value="classy">Classy</option>
+                      <option value="classy-rounded">Classy rounded</option>
+                      <option value="extra-rounded">
+                        Extra rounded
+                      </option></select
+                    ><span class="field-note"
+                      >A small detail. Your own style.</span
+                    >
+                  </div>
+                </div>
+                <p
+                  id="color-warning"
+                  class="warning-message"
+                  role="status"
+                  hidden
+                >
+                  Light colors can be difficult to scan. Choose a darker color
+                  for the best results.
+                </p>
+                <div class="logo-control">
+                  <label class="upload-area" for="logo-input"
+                    ><span class="upload-symbol" data-icon="image"></span
+                    ><span
+                      ><strong id="logo-name">Add your logo</strong
+                      ><span id="logo-caption"
+                        >PNG, JPG or WebP · up to 5 MB</span
+                      ></span
+                    ><span data-icon="plus"></span
+                    ><input
+                      id="logo-input"
+                      type="file"
+                      accept="image/png,image/jpeg,image/webp" /></label
+                  ><button
+                    id="remove-logo"
+                    class="text-button"
+                    type="button"
+                    hidden
+                  >
+                    Remove logo
+                  </button>
+                </div>
+                <p
+                  id="logo-error"
+                  class="error-message"
+                  role="alert"
+                  hidden
+                ></p>
+                <button
+                  id="reset-style"
+                  class="text-button reset-button"
+                  type="button"
+                >
+                  <span data-icon="reset"></span>Reset appearance
+                </button>
+              </div>
+            </details>
+            <div class="privacy-note">
+              <span data-icon="lock"></span>
+              <p>
+                Just your browser. No uploads, no tracking.<br /><span
+                  >Your links and logos stay on this device.</span
+                >
+              </p>
+            </div>
+          </section>
+
+          <section
+            class="preview-panel glass-panel"
+            aria-labelledby="preview-title"
+          >
+            <div class="panel-heading">
+              <div class="step-label">
+                <span class="step-number">02</span
+                ><span id="preview-title">YOUR QR CODE</span>
+              </div>
+              <span id="preview-status" class="preview-status"
+                >Awaiting a link</span
+              >
+            </div>
+            <div class="qr-stage">
+              <div class="corner corner-tl" aria-hidden="true"></div>
+              <div class="corner corner-tr" aria-hidden="true"></div>
+              <div class="corner corner-bl" aria-hidden="true"></div>
+              <div class="corner corner-br" aria-hidden="true"></div>
+              <div class="qr-paper">
+                <div
+                  id="preview"
+                  role="img"
+                  aria-label="Generated QR code"
+                  hidden
+                ></div>
+                <div id="empty-preview">
+                  <svg
+                    class="empty-code"
+                    viewBox="0 0 100 100"
+                    aria-hidden="true"
+                  >
+                    <g fill="none" stroke="currentColor" stroke-width="5">
+                      <rect x="12" y="12" width="26" height="26" rx="5" />
+                      <rect x="62" y="12" width="26" height="26" rx="5" />
+                      <rect x="12" y="62" width="26" height="26" rx="5" />
+                    </g>
+                    <g fill="currentColor">
+                      <rect x="21" y="21" width="8" height="8" rx="1" />
+                      <rect x="71" y="21" width="8" height="8" rx="1" />
+                      <rect x="21" y="71" width="8" height="8" rx="1" />
+                      <rect x="60" y="60" width="11" height="11" rx="2" />
+                      <rect x="78" y="60" width="11" height="11" rx="2" />
+                      <rect x="60" y="78" width="11" height="11" rx="2" />
+                      <rect x="78" y="78" width="11" height="11" rx="2" />
+                    </g></svg
+                  ><strong>A link becomes a possibility.</strong
+                  ><span>Your QR code will appear here.</span>
+                </div>
+              </div>
+            </div>
+            <div class="preview-caption">
+              <span id="preview-caption"
+                >Made for screens. Ready for print.</span
+              >
+              <p id="encoded-url" hidden></p>
+            </div>
+            <div class="download-actions">
+              <button
+                id="download-png"
+                class="button button-primary"
+                type="button"
+                disabled
+              >
+                <span data-icon="download"></span>Download PNG</button
+              ><button
+                id="download-svg"
+                class="button button-outline"
+                type="button"
+                disabled
+              >
+                <span data-icon="file"></span>Download SVG
+              </button>
+            </div>
+            <p class="export-note">
+              High resolution PNG <span>·</span> Scalable SVG
+            </p>
+          </section>
+        </div>
+
+        <div class="benefits" aria-label="Features">
+          <span><span data-icon="spark"></span>Make it yours</span
+          ><span><span data-icon="wifi"></span>Works offline</span
+          ><span
+            ><span data-icon="infinity"></span>Free. Every single time.</span
+          >
+        </div>
+      </main>
+      <footer>
+        <span
+          >NUU QR <span class="footer-dot">/</span> Less friction. More
+          connection.</span
+        ><a
+          href="https://github.com/oblakstudio/qr-code-styling"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Built with qr-code-styling<span class="sr-only">
+            (opens in a new tab)</span
+          ></a
+        >
+      </footer>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    <aside id="pwa-update" class="update-banner" aria-label="App update" hidden>
+      <div>
+        <strong>A fresh version is ready.</strong>
+        <p>Your current design will be kept.</p>
+      </div>
+      <button id="update-button" class="button button-primary" type="button">
+        Update now</button
+      ><button id="dismiss-update-button" class="text-button" type="button">
+        Later
+      </button>
+    </aside>
+    <dialog id="install-dialog" aria-labelledby="install-title">
+      <button
+        id="close-install-dialog"
+        class="dialog-close"
+        aria-label="Close install instructions"
+        type="button"
+      >
+        <span data-icon="close"></span>
+      </button>
+      <div class="dialog-icon" data-icon="install"></div>
+      <h2 id="install-title">A little closer to hand.</h2>
+      <p id="install-instructions">
+        Install NUU QR from your browser menu to keep it on your home screen.
+      </p>
+      <p class="dialog-note">
+        After your first visit, you can create and download QR codes offline.
+      </p>
+    </dialog>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
