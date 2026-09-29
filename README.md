@@ -4,7 +4,7 @@
 
 An English-language, mobile-friendly QR code studio. Turn a website address into a crisp, customizable QR code, entirely in your browser.
 
-**Production URL:** [qr.nuu.app](https://qr.nuu.app) · **Hosting:** GitHub Pages
+**Production URL:** [root50643.github.io/qrcode-generator](https://root50643.github.io/qrcode-generator/) · **Hosting:** GitHub Pages
 
 ![NUU QR desktop interface showing a generated QR code](docs/images/desktop.png)
 
@@ -100,9 +100,9 @@ scripts/                Reproducible app-icon generation
 
 In the repository's **Settings → Pages**, choose **GitHub Actions** as the build source. Pushing to `main` runs unit tests, type checking, production build, and Chromium browser tests before publishing `dist/`. Pull requests run the checks without deploying.
 
-The workflow reads `actions/configure-pages` output and supplies `BASE_PATH` to Vite. Assets, the manifest, and the service worker therefore use `/qrcode-generator/` for the default project URL, or `/` for the custom domain. Local builds default to `/`; set `BASE_PATH=/qrcode-generator/` to reproduce a project-path build.
+The workflow reads `actions/configure-pages` output and supplies `BASE_PATH` to Vite. Assets, the manifest, and the service worker use `/qrcode-generator/` for the production project URL. Local builds default to `/`; set `BASE_PATH=/qrcode-generator/` to reproduce the production build.
 
-To use **qr.nuu.app**, set that exact custom domain in **Settings → Pages** and rerun the workflow so the build uses the domain root. GitHub Actions deployments use the Pages setting; adding a `CNAME` file alone does not configure the custom domain. After the DNS record is configured and the HTTPS certificate is issued, enable **Enforce HTTPS**.
+The site uses GitHub's default HTTPS address, **https://root50643.github.io/qrcode-generator/**. Leave **Custom domain** empty in **Settings → Pages** and keep **Enforce HTTPS** enabled. No custom domain or DNS configuration is required.
 
 ## Source and license
 
